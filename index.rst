@@ -13,5 +13,5 @@ An introduction Networkx and Social Network Analyses.
    :caption: Contents:
    :numbered:
    
-   network_basics.rst
-   network_load.rst
+   networkx_basics.rst
+   networkx_load.rst
