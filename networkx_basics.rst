@@ -29,7 +29,7 @@ Basic Graphs
   # True
 
 .. figure:: images/network_types.png
-    :width: 200px
+    :width: 800px
     :align: center
     :height: 100px
     :alt: alternate text
