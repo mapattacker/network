@@ -4,6 +4,16 @@ Graph Basics
 Basic Graphs
 ------------
 
+.. figure:: images/network_types.png
+    :width: 800px
+    :align: center
+    :height: 100px
+    :alt: alternate text
+    :figclass: align-center
+
+    From University of Michigan, Python for Data Science Coursera Specialization
+    
+
 .. code:: python
 
   # Undirected Graph
@@ -28,14 +38,6 @@ Basic Graphs
   M.is_multigraph()
   # True
 
-.. figure:: images/network_types.png
-    :width: 800px
-    :align: center
-    :height: 100px
-    :alt: alternate text
-    :figclass: align-center
-
-    From University of Michigan, Python for Data Science Coursera Specialization
 
 Bipartite Graph
 ---------------
