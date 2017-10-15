@@ -1,0 +1,261 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Loading Data as Graph &#8212; Network Analysis 1 documentation</title>
+    
+    <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '1',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head>
+  <body role="document">
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="loading-data-as-graph">
+<h1>Loading Data as Graph<a class="headerlink" href="#loading-data-as-graph" title="Permalink to this headline">¶</a></h1>
+<div class="code python highlight-default"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">networkx</span> <span class="k">as</span> <span class="nn">nx</span>
+</pre></div>
+</div>
+<div class="section" id="format">
+<h2>Format<a class="headerlink" href="#format" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="adjacency-list">
+<h3>Adjacency List<a class="headerlink" href="#adjacency-list" title="Permalink to this headline">¶</a></h3>
+<p>If the data is in an adjacency list, it will appear like below.
+The left most represents nodes, and others on its right represents nodes that are linked to it.</p>
+<div class="code python highlight-default"><div class="highlight"><pre><span></span><span class="mi">0</span> <span class="mi">1</span> <span class="mi">2</span> <span class="mi">3</span> <span class="mi">5</span>
+<span class="mi">1</span> <span class="mi">3</span> <span class="mi">6</span>
+<span class="mi">2</span>
+<span class="mi">3</span> <span class="mi">4</span>
+<span class="mi">4</span> <span class="mi">5</span> <span class="mi">7</span>
+<span class="mi">5</span> <span class="mi">8</span>
+<span class="mi">6</span>
+<span class="mi">7</span>
+<span class="mi">8</span> <span class="mi">9</span>
+<span class="mi">9</span>
+</pre></div>
+</div>
+<p>To call it from a file, we use <code class="docutils literal"><span class="pre">nx.read_adlist</span></code>.</p>
+<div class="code python highlight-default"><div class="highlight"><pre><span></span><span class="n">G2</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">read_adjlist</span><span class="p">(</span><span class="s1">&#39;G_adjlist.txt&#39;</span><span class="p">,</span> <span class="n">nodetype</span><span class="o">=</span><span class="nb">int</span><span class="p">)</span>
+<span class="n">G2</span><span class="o">.</span><span class="n">edges</span><span class="p">()</span>
+
+<span class="p">[(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span>
+ <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span>
+ <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">3</span><span class="p">),</span>
+ <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">5</span><span class="p">),</span>
+ <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">),</span>
+ <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">6</span><span class="p">),</span>
+ <span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">),</span>
+ <span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">4</span><span class="p">),</span>
+ <span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">8</span><span class="p">),</span>
+ <span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">7</span><span class="p">),</span>
+ <span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">9</span><span class="p">)]</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="edge-list">
+<h3>Edge List<a class="headerlink" href="#edge-list" title="Permalink to this headline">¶</a></h3>
+<p>Edge list is just a two column representation of one node to another. It can have additional columns for weights.</p>
+<div class="code python highlight-default"><div class="highlight"><pre><span></span><span class="p">[(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="p">{</span><span class="s1">&#39;weight&#39;</span><span class="p">:</span> <span class="mi">4</span><span class="p">}),</span>
+ <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="p">{</span><span class="s1">&#39;weight&#39;</span><span class="p">:</span> <span class="mi">3</span><span class="p">}),</span>
+ <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="p">{</span><span class="s1">&#39;weight&#39;</span><span class="p">:</span> <span class="mi">2</span><span class="p">}),</span>
+ <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="p">{</span><span class="s1">&#39;weight&#39;</span><span class="p">:</span> <span class="mi">6</span><span class="p">}),</span>
+ <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="p">{</span><span class="s1">&#39;weight&#39;</span><span class="p">:</span> <span class="mi">2</span><span class="p">}),</span>
+ <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="p">{</span><span class="s1">&#39;weight&#39;</span><span class="p">:</span> <span class="mi">5</span><span class="p">}),</span>
+ <span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="p">{</span><span class="s1">&#39;weight&#39;</span><span class="p">:</span> <span class="mi">3</span><span class="p">}),</span>
+ <span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="p">{</span><span class="s1">&#39;weight&#39;</span><span class="p">:</span> <span class="mi">1</span><span class="p">}),</span>
+ <span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="p">{</span><span class="s1">&#39;weight&#39;</span><span class="p">:</span> <span class="mi">6</span><span class="p">}),</span>
+ <span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="p">{</span><span class="s1">&#39;weight&#39;</span><span class="p">:</span> <span class="mi">2</span><span class="p">}),</span>
+ <span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="p">{</span><span class="s1">&#39;weight&#39;</span><span class="p">:</span> <span class="mi">1</span><span class="p">})]</span>
+</pre></div>
+</div>
+<p>We can use <code class="docutils literal"><span class="pre">nx.read_edgelist()</span></code> to transform it into a graph network.</p>
+<div class="code python highlight-default"><div class="highlight"><pre><span></span><span class="n">G4</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">read_edgelist</span><span class="p">(</span><span class="s1">&#39;G_edgelist.txt&#39;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="p">[(</span><span class="s1">&#39;Weight&#39;</span><span class="p">,</span> <span class="nb">int</span><span class="p">)],</span> <span class="p">,</span> <span class="n">delimiter</span><span class="o">=</span><span class="s1">&#39;</span><span class="se">\t</span><span class="s1">&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>For multiple edge attributes and graph definition, we have addition definitions in the <code class="docutils literal"><span class="pre">read_edgelist()</span></code> function.</p>
+<div class="code python highlight-default"><div class="highlight"><pre><span></span><span class="n">chess</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">read_edgelist</span><span class="p">(</span><span class="s1">&#39;chess_graph.txt&#39;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="p">[(</span><span class="s1">&#39;outcome&#39;</span><span class="p">,</span> <span class="nb">int</span><span class="p">),</span> <span class="p">(</span><span class="s1">&#39;timestamp&#39;</span><span class="p">,</span> <span class="nb">float</span><span class="p">)],</span>
+                         <span class="n">create_using</span><span class="o">=</span><span class="n">nx</span><span class="o">.</span><span class="n">MultiDiGraph</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="adjacency-matrix">
+<h3>Adjacency Matrix<a class="headerlink" href="#adjacency-matrix" title="Permalink to this headline">¶</a></h3>
+<p>From a graph network, we can transform it into an adjacency matrix using a pandas dataframe.</p>
+<div class="code python highlight-default"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+
+<span class="n">nx</span><span class="o">.</span><span class="n">to_pandas_dataframe</span><span class="p">(</span><span class="n">g</span><span class="p">,</span> <span class="n">weight</span><span class="o">=</span><span class="s1">&#39;distance&#39;</span><span class="p">)</span>
+
+      <span class="mf">1.0</span>         <span class="mf">2.0</span>     <span class="mf">3.0</span>     <span class="mf">4.0</span>     <span class="mf">5.0</span>   <span class="mf">6.0</span>       <span class="mf">7.0</span>
+<span class="mf">1.0</span>     <span class="mf">0.0</span>           <span class="mf">1306.0</span>  <span class="mf">0.0</span>         <span class="mf">0.0</span>   <span class="mf">2161.0</span>        <span class="mf">2661.0</span>  <span class="mf">0.0</span>
+<span class="mf">2.0</span>     <span class="mf">1306.0</span>        <span class="mf">0.0</span>         <span class="mf">919.0</span>         <span class="mf">629.0</span> <span class="mf">0.0</span>         <span class="mf">0.0</span>     <span class="mf">0.0</span>
+<span class="mf">3.0</span>     <span class="mf">0.0</span>       <span class="mf">919.0</span>         <span class="mf">0.0</span>       <span class="mf">435.0</span>       <span class="mf">1225.0</span>  <span class="mf">0.0</span>         <span class="mf">1983.0</span>
+<span class="mf">4.0</span>     <span class="mf">0.0</span>       <span class="mf">629.0</span>         <span class="mf">435.0</span>   <span class="mf">0.0</span>     <span class="mf">0.0</span>       <span class="mf">0.0</span>     <span class="mf">0.0</span>
+<span class="mf">5.0</span>     <span class="mf">2161.0</span>        <span class="mf">0.0</span>         <span class="mf">1225.0</span>      <span class="mf">0.0</span>       <span class="mf">0.0</span>       <span class="mf">1483.0</span>      <span class="mf">1258.0</span>
+<span class="mf">6.0</span>     <span class="mf">2661.0</span>        <span class="mf">0.0</span>         <span class="mf">0.0</span>     <span class="mf">0.0</span>   <span class="mf">1483.0</span>        <span class="mf">0.0</span>         <span class="mf">0.0</span>
+<span class="mf">7.0</span>     <span class="mf">0.0</span>       <span class="mf">0.0</span>     <span class="mf">1983.0</span>      <span class="mf">0.0</span>     <span class="mf">1258.0</span>  <span class="mf">0.0</span>     <span class="mf">0.0</span>
+</pre></div>
+</div>
+<p>An adjacency matrix can also be loaded back to a graph</p>
+<div class="code python highlight-default"><div class="highlight"><pre><span></span><span class="n">G3</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">Graph</span><span class="p">(</span><span class="n">matrix</span><span class="p">)</span>
+<span class="n">G3</span><span class="o">.</span><span class="n">edges</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="sql-dataframe-graph">
+<h2>SQL &gt; DataFrame &gt; Graph<a class="headerlink" href="#sql-dataframe-graph" title="Permalink to this headline">¶</a></h2>
+<p>The below code uses an edge list format.</p>
+<div class="code python highlight-default"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">psycopg2</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+
+<span class="n">conn</span> <span class="o">=</span> <span class="n">psycopg2</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="n">database</span><span class="o">=</span><span class="s2">&quot;postgres&quot;</span><span class="p">,</span> <span class="n">user</span><span class="o">=</span><span class="s2">&quot;postgres&quot;</span><span class="p">,</span> <span class="n">password</span><span class="o">=</span><span class="s2">&quot;***&quot;</span><span class="p">,</span> <span class="n">host</span><span class="o">=</span><span class="s2">&quot;127.0.0.1&quot;</span><span class="p">,</span> <span class="n">port</span><span class="o">=</span><span class="s2">&quot;5432&quot;</span><span class="p">)</span>
+
+<span class="n">query</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;SELECT fromnode, tonode, distance from edges&quot;&quot;&quot;</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_sql_query</span><span class="p">(</span><span class="n">query</span><span class="p">,</span> <span class="n">conn</span><span class="p">)</span>
+<span class="n">g</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">from_pandas_dataframe</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="s1">&#39;fromnode&#39;</span><span class="p">,</span> <span class="s1">&#39;tonode&#39;</span><span class="p">,</span> <span class="s1">&#39;distance&#39;</span><span class="p">)</span> <span class="c1"># or edge_attr=&#39;distance&#39;</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="graph-dataframe">
+<h2>Graph &gt; DataFrame<a class="headerlink" href="#graph-dataframe" title="Permalink to this headline">¶</a></h2>
+<p>Sometimes, it is necessary to convert a graph into an edge list into a dataframe to utilise pandas
+powerful analysis abilities.</p>
+<div class="code python highlight-default"><div class="highlight"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">new</span><span class="o">.</span><span class="n">edges</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="kc">True</span><span class="p">),</span> <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;name1&#39;</span><span class="p">,</span><span class="s1">&#39;name2&#39;</span><span class="p">,</span><span class="s1">&#39;weights&#39;</span><span class="p">])</span>
+</pre></div>
+</div>
+<p>Note that weight attributes are in a dictionary.</p>
+<div class="code python highlight-default"><div class="highlight"><pre><span></span><span class="n">name1</span>   <span class="n">name2</span>   <span class="n">weights</span>
+<span class="n">Georgia</span>       <span class="n">Lee</span>         <span class="p">{</span><span class="s1">u&#39;Weight&#39;</span><span class="p">:</span> <span class="mi">10</span><span class="p">}</span>
+<span class="n">Georgia</span>       <span class="n">Claude</span>  <span class="p">{</span><span class="s1">u&#39;Weight&#39;</span><span class="p">:</span> <span class="mi">90</span><span class="p">}</span>
+<span class="n">Georgia</span>       <span class="n">Andy</span>      <span class="p">{</span><span class="s1">u&#39;Weight&#39;</span><span class="p">:</span> <span class="o">-</span><span class="mi">10</span><span class="p">}</span>
+<span class="n">Georgia</span>       <span class="n">Pablo</span>     <span class="p">{</span><span class="s1">u&#39;Weight&#39;</span><span class="p">:</span> <span class="mi">0</span><span class="p">}</span>
+<span class="n">Georgia</span>       <span class="n">Frida</span>     <span class="p">{</span><span class="s1">u&#39;Weight&#39;</span><span class="p">:</span> <span class="mi">0</span><span class="p">}</span>
+<span class="n">Georgia</span>       <span class="n">Vincent</span> <span class="p">{</span><span class="s1">u&#39;Weight&#39;</span><span class="p">:</span> <span class="mi">0</span><span class="p">}</span>
+<span class="n">Georgia</span>       <span class="n">Joan</span>      <span class="p">{</span><span class="s1">u&#39;Weight&#39;</span><span class="p">:</span> <span class="mi">0</span><span class="p">}</span>
+<span class="n">Lee</span>       <span class="n">Claude</span>      <span class="p">{</span><span class="s1">u&#39;Weight&#39;</span><span class="p">:</span> <span class="mi">0</span><span class="p">}</span>
+</pre></div>
+</div>
+<p>But we can easily extract the dictionary value using a map function.</p>
+<div class="code python highlight-default"><div class="highlight"><pre><span></span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;relation&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;weights&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="p">[</span><span class="s1">&#39;Weight&#39;</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="printing-out-data">
+<h2>Printing Out Data<a class="headerlink" href="#printing-out-data" title="Permalink to this headline">¶</a></h2>
+<div class="code python highlight-default"><div class="highlight"><pre><span></span><span class="c1"># list nodes</span>
+<span class="n">g</span><span class="o">.</span><span class="n">nodes</span><span class="p">()</span>
+
+<span class="c1"># list edges</span>
+<span class="n">g</span><span class="o">.</span><span class="n">edges</span><span class="p">()</span>
+
+<span class="c1"># show all data, including weights and attributes</span>
+<span class="n">g</span><span class="o">.</span><span class="n">nodes</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">g</span><span class="o">.</span><span class="n">edges</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="c1"># number of edges / nodes</span>
+<span class="nb">len</span><span class="p">(</span><span class="n">g</span><span class="p">)</span> <span class="c1"># or g.number_of_nodes()</span>
+<span class="n">g</span><span class="o">.</span><span class="n">number_of_edges</span><span class="p">()</span>
+
+<span class="c1"># number connections for each node</span>
+<span class="n">g</span><span class="o">.</span><span class="n">degree</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Loading Data as Graph</a><ul>
+<li><a class="reference internal" href="#format">Format</a><ul>
+<li><a class="reference internal" href="#adjacency-list">Adjacency List</a></li>
+<li><a class="reference internal" href="#edge-list">Edge List</a></li>
+<li><a class="reference internal" href="#adjacency-matrix">Adjacency Matrix</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#sql-dataframe-graph">SQL &gt; DataFrame &gt; Graph</a></li>
+<li><a class="reference internal" href="#graph-dataframe">Graph &gt; DataFrame</a></li>
+<li><a class="reference internal" href="#printing-out-data">Printing Out Data</a></li>
+</ul>
+</li>
+</ul>
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+  </ul></li>
+</ul>
+</div>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/networkx_load.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2017, Jake.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.5.1</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.9</a>
+      
+      |
+      <a href="_sources/networkx_load.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

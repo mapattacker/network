@@ -1,0 +1,242 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Graph Basics &#8212; Network Analysis 1 documentation</title>
+    
+    <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '1',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head>
+  <body role="document">
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="graph-basics">
+<h1>Graph Basics<a class="headerlink" href="#graph-basics" title="Permalink to this headline">¶</a></h1>
+<div class="code python highlight-default"><div class="highlight"><pre><span></span><span class="c1"># Undirected Graph</span>
+<span class="n">G</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">Graph</span><span class="p">()</span>
+<span class="n">G</span><span class="o">.</span><span class="n">add_edge</span><span class="p">(</span><span class="s1">&#39;A&#39;</span><span class="p">,</span><span class="s1">&#39;B&#39;</span><span class="p">)</span>
+<span class="n">G</span><span class="o">.</span><span class="n">add_edge</span><span class="p">(</span><span class="s1">&#39;B&#39;</span><span class="p">,</span><span class="s1">&#39;C&#39;</span><span class="p">)</span>
+
+
+<span class="c1"># Directed Graph</span>
+<span class="n">D</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">DiGraph</span><span class="p">()</span>
+<span class="n">D</span><span class="o">.</span><span class="n">add_edge</span><span class="p">(</span><span class="s1">&#39;B&#39;</span><span class="p">,</span><span class="s1">&#39;A&#39;</span><span class="p">)</span>
+<span class="n">D</span><span class="o">.</span><span class="n">add_edge</span><span class="p">(</span><span class="s1">&#39;B&#39;</span><span class="p">,</span><span class="s1">&#39;C&#39;</span><span class="p">)</span>
+<span class="c1"># Check</span>
+<span class="n">D</span><span class="o">.</span><span class="n">is_directed</span><span class="p">()</span>
+<span class="c1"># True</span>
+
+<span class="c1"># Multi-Graph</span>
+<span class="n">M</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">MultiGraph</span><span class="p">()</span>
+<span class="n">M</span><span class="o">.</span><span class="n">add_edge</span><span class="p">(</span><span class="s1">&#39;B&#39;</span><span class="p">,</span><span class="s1">&#39;A&#39;</span><span class="p">)</span>
+<span class="n">M</span><span class="o">.</span><span class="n">add_edge</span><span class="p">(</span><span class="s1">&#39;B&#39;</span><span class="p">,</span><span class="s1">&#39;C&#39;</span><span class="p">)</span>
+<span class="c1"># Check</span>
+<span class="n">M</span><span class="o">.</span><span class="n">is_multigraph</span><span class="p">()</span>
+<span class="c1"># True</span>
+</pre></div>
+</div>
+<div class="section" id="bipartite-graph">
+<h2>Bipartite Graph<a class="headerlink" href="#bipartite-graph" title="Permalink to this headline">¶</a></h2>
+<p>Bipartite graph is a special network where there are two set of nodes, and nodes within each set have no edges between each other.</p>
+<p>To create a</p>
+<div class="code python highlight-default"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">networkx.algorithms</span> <span class="k">import</span> <span class="n">bipartite</span>
+
+<span class="n">B</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">Graph</span><span class="p">()</span>
+<span class="c1"># Add nodes</span>
+<span class="n">B</span><span class="o">.</span><span class="n">add_nodes_from</span><span class="p">([</span><span class="s1">&#39;A&#39;</span><span class="p">,</span><span class="s1">&#39;B&#39;</span><span class="p">,</span><span class="s1">&#39;C&#39;</span><span class="p">,</span><span class="s1">&#39;D&#39;</span><span class="p">,</span><span class="s1">&#39;E&#39;</span><span class="p">],</span> <span class="n">bipartite</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">B</span><span class="o">.</span><span class="n">add_nodes_from</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">],</span> <span class="n">bipartite</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="c1"># Add edges</span>
+<span class="n">B</span><span class="o">.</span><span class="n">add_edges_from</span><span class="p">([(</span><span class="s1">&#39;A&#39;</span><span class="p">,</span><span class="mi">1</span><span class="p">),(</span><span class="s1">&#39;B&#39;</span><span class="p">,</span><span class="mi">1</span><span class="p">),(</span><span class="s1">&#39;C&#39;</span><span class="p">,</span><span class="mi">1</span><span class="p">),(</span><span class="s1">&#39;C&#39;</span><span class="p">,</span><span class="mi">3</span><span class="p">),(</span><span class="s1">&#39;D&#39;</span><span class="p">,</span><span class="mi">2</span><span class="p">),(</span><span class="s1">&#39;E&#39;</span><span class="p">,</span><span class="mi">3</span><span class="p">),(</span><span class="s1">&#39;E&#39;</span><span class="p">,</span><span class="mi">4</span><span class="p">)])</span>
+</pre></div>
+</div>
+<p># check if graph is bipartite</p>
+<div class="code python highlight-default"><div class="highlight"><pre><span></span><span class="n">bipartite</span><span class="o">.</span><span class="n">is_bipartite</span><span class="p">(</span><span class="n">B</span><span class="p">)</span>
+<span class="c1"># True</span>
+</pre></div>
+</div>
+<p>To get list of nodes with partitions</p>
+<div class="code python highlight-default"><div class="highlight"><pre><span></span><span class="c1"># get set of partition nodes</span>
+<span class="n">bipartite</span><span class="o">.</span><span class="n">sets</span><span class="p">(</span><span class="n">B</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>To check if a set of nodes is part of a bipartition of a graph:</p>
+<blockquote>
+<div><p>x = set([1,2,3,4])
+print bipartite.is_bipartite_node_set(B, x)
+# True</p>
+<p>z = set([1,2,3,4,&#8217;A&#8217;])
+print bipartite.is_bipartite_node_set(B, z)
+# False</p>
+</div></blockquote>
+</div>
+<div class="section" id="projected-bipartite-graph">
+<h2>Projected Bipartite Graph<a class="headerlink" href="#projected-bipartite-graph" title="Permalink to this headline">¶</a></h2>
+<p>For each partition of a Bipartite Graph, it is possible to generate a projected graph where one set of nodes have common edges to
+the other set of nodes.</p>
+<div class="code python highlight-default"><div class="highlight"><pre><span></span><span class="n">B</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">Graph</span><span class="p">()</span>
+<span class="n">B</span><span class="o">.</span><span class="n">add_edges_from</span><span class="p">([(</span><span class="s1">&#39;A&#39;</span><span class="p">,</span><span class="mi">1</span><span class="p">),</span> <span class="p">(</span><span class="s1">&#39;B&#39;</span><span class="p">,</span><span class="mi">1</span><span class="p">),</span> <span class="p">(</span><span class="s1">&#39;C&#39;</span><span class="p">,</span><span class="mi">1</span><span class="p">),(</span><span class="s1">&#39;D&#39;</span><span class="p">,</span><span class="mi">1</span><span class="p">),(</span><span class="s1">&#39;H&#39;</span><span class="p">,</span><span class="mi">1</span><span class="p">),</span> \
+                    <span class="p">(</span><span class="s1">&#39;B&#39;</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span> <span class="p">(</span><span class="s1">&#39;C&#39;</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span> <span class="p">(</span><span class="s1">&#39;D&#39;</span><span class="p">,</span> <span class="mi">2</span><span class="p">),(</span><span class="s1">&#39;E&#39;</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span> <span class="p">(</span><span class="s1">&#39;G&#39;</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span> <span class="p">(</span><span class="s1">&#39;E&#39;</span><span class="p">,</span> <span class="mi">3</span><span class="p">),</span> \
+                    <span class="p">(</span><span class="s1">&#39;F&#39;</span><span class="p">,</span> <span class="mi">3</span><span class="p">),</span> <span class="p">(</span><span class="s1">&#39;H&#39;</span><span class="p">,</span> <span class="mi">3</span><span class="p">),</span> <span class="p">(</span><span class="s1">&#39;J&#39;</span><span class="p">,</span> <span class="mi">3</span><span class="p">),</span> <span class="p">(</span><span class="s1">&#39;E&#39;</span><span class="p">,</span> <span class="mi">4</span><span class="p">),</span> <span class="p">(</span><span class="s1">&#39;I&#39;</span><span class="p">,</span> <span class="mi">4</span><span class="p">),</span> <span class="p">(</span><span class="s1">&#39;J&#39;</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span> <span class="p">])</span>
+
+<span class="c1"># set of nodes to generate a projected graph from a partition</span>
+<span class="n">X</span> <span class="o">=</span> <span class="nb">set</span><span class="p">([</span><span class="s1">&#39;A&#39;</span><span class="p">,</span><span class="s1">&#39;B&#39;</span><span class="p">,</span><span class="s1">&#39;C&#39;</span><span class="p">,</span><span class="s1">&#39;D&#39;</span><span class="p">,</span> <span class="s1">&#39;E&#39;</span><span class="p">,</span> <span class="s1">&#39;F&#39;</span><span class="p">,</span><span class="s1">&#39;G&#39;</span><span class="p">,</span> <span class="s1">&#39;H&#39;</span><span class="p">,</span> <span class="s1">&#39;I&#39;</span><span class="p">,</span><span class="s1">&#39;J&#39;</span><span class="p">])</span>
+<span class="n">P</span> <span class="o">=</span> <span class="n">bipartite</span><span class="o">.</span><span class="n">projected_graph</span><span class="p">(</span><span class="n">B</span><span class="p">,</span> <span class="n">X</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="weighted-projected-bipartite-graph">
+<h2>Weighted Projected Bipartite Graph<a class="headerlink" href="#weighted-projected-bipartite-graph" title="Permalink to this headline">¶</a></h2>
+<p>It is also possible to get the the weights of the projected graph using the function below.</p>
+<div class="code python highlight-default"><div class="highlight"><pre><span></span><span class="n">bipartite</span><span class="o">.</span><span class="n">weighted_projected_graph</span><span class="p">(</span><span class="n">B</span><span class="p">,</span> <span class="n">X</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="edge-types">
+<h2>Edge Types<a class="headerlink" href="#edge-types" title="Permalink to this headline">¶</a></h2>
+<div class="code python highlight-default"><div class="highlight"><pre><span></span><span class="c1"># Weighted Edges</span>
+<span class="n">W</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">Graph</span><span class="p">()</span>
+<span class="n">W</span><span class="o">.</span><span class="n">add_edge</span><span class="p">(</span><span class="s1">&#39;A&#39;</span><span class="p">,</span><span class="s1">&#39;B&#39;</span><span class="p">,</span> <span class="n">weight</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
+<span class="n">W</span><span class="o">.</span><span class="n">add_edge</span><span class="p">(</span><span class="s1">&#39;B&#39;</span><span class="p">,</span><span class="s1">&#39;C&#39;</span><span class="p">,</span> <span class="n">weight</span><span class="o">=</span><span class="mi">6</span><span class="p">)</span>
+
+<span class="c1"># Signed Edges</span>
+<span class="n">S</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">Graph</span><span class="p">()</span>
+<span class="n">S</span><span class="o">.</span><span class="n">add_edge</span><span class="p">(</span><span class="s1">&#39;A&#39;</span><span class="p">,</span><span class="s1">&#39;B&#39;</span><span class="p">,</span> <span class="n">sign</span><span class="o">=</span><span class="s1">&#39;+&#39;</span><span class="p">)</span>
+<span class="n">S</span><span class="o">.</span><span class="n">add_edge</span><span class="p">(</span><span class="s1">&#39;B&#39;</span><span class="p">,</span><span class="s1">&#39;C&#39;</span><span class="p">,</span> <span class="n">sign</span><span class="o">=</span><span class="s1">&#39;-&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>We can add edge attributes with any keys.</p>
+<div class="code python highlight-default"><div class="highlight"><pre><span></span><span class="c1"># Edge Attributes</span>
+<span class="n">R</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">Graph</span><span class="p">()</span>
+<span class="n">R</span><span class="o">.</span><span class="n">add_edge</span><span class="p">(</span><span class="s1">&#39;A&#39;</span><span class="p">,</span><span class="s1">&#39;B&#39;</span><span class="p">,</span> <span class="n">relation</span><span class="o">=</span><span class="s1">&#39;friend&#39;</span><span class="p">)</span>
+<span class="n">R</span><span class="o">.</span><span class="n">add_edge</span><span class="p">(</span><span class="s1">&#39;B&#39;</span><span class="p">,</span><span class="s1">&#39;C&#39;</span><span class="p">,</span> <span class="n">relation</span><span class="o">=</span><span class="s1">&#39;coworker&#39;</span><span class="p">)</span>
+<span class="n">R</span><span class="o">.</span><span class="n">add_edge</span><span class="p">(</span><span class="s1">&#39;B&#39;</span><span class="p">,</span><span class="s1">&#39;D&#39;</span><span class="p">,</span> <span class="n">relation</span><span class="o">=</span><span class="s1">&#39;family&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>And even add both weights &amp; attributes</p>
+<div class="code python highlight-default"><div class="highlight"><pre><span></span><span class="n">R</span><span class="o">.</span><span class="n">add_edge</span><span class="p">(</span><span class="s1">&#39;A&#39;</span><span class="p">,</span><span class="s1">&#39;B&#39;</span><span class="p">,</span> <span class="n">relation</span><span class="o">=</span><span class="s1">&#39;friend&#39;</span><span class="p">,</span> <span class="n">weight</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="node-attributes">
+<h2>Node Attributes<a class="headerlink" href="#node-attributes" title="Permalink to this headline">¶</a></h2>
+<p>Same as edge attributes, nodes attributes can also be assigned with any keys.</p>
+<div class="code python highlight-default"><div class="highlight"><pre><span></span><span class="n">G</span><span class="o">=</span><span class="n">nx</span><span class="o">.</span><span class="n">MultiGraph</span><span class="p">()</span>
+<span class="n">G</span><span class="o">.</span><span class="n">add_node</span><span class="p">(</span><span class="s1">&#39;A&#39;</span><span class="p">,</span><span class="n">role</span><span class="o">=</span><span class="s1">&#39;manager&#39;</span><span class="p">)</span>
+<span class="n">G</span><span class="o">.</span><span class="n">node</span><span class="p">[</span><span class="s1">&#39;A&#39;</span><span class="p">][</span><span class="s1">&#39;role&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;team member&#39;</span>
+<span class="n">G</span><span class="o">.</span><span class="n">node</span><span class="p">[</span><span class="s1">&#39;B&#39;</span><span class="p">][</span><span class="s1">&#39;role&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;engineer&#39;</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="joining-two-graphs">
+<h2>Joining Two Graphs<a class="headerlink" href="#joining-two-graphs" title="Permalink to this headline">¶</a></h2>
+<p>Networkx can merge two graphs together with their differing weights when the edge list are the same.</p>
+<div class="code python highlight-default"><div class="highlight"><pre><span></span><span class="n">new</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">compose</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span>
+
+<span class="n">name1</span>   <span class="n">name2</span>   <span class="n">weights</span>
+<span class="n">Georgia</span>       <span class="n">Lee</span>         <span class="p">{</span><span class="s1">u&#39;Weight&#39;</span><span class="p">:</span> <span class="mi">10</span><span class="p">}</span>
+<span class="n">Georgia</span>       <span class="n">Claude</span>  <span class="p">{</span><span class="s1">u&#39;weight&#39;</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span><span class="s1">u&#39;Weight&#39;</span><span class="p">:</span> <span class="mi">90</span><span class="p">}</span>
+<span class="n">Georgia</span>       <span class="n">Andy</span>      <span class="p">{</span><span class="s1">u&#39;weight&#39;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s1">u&#39;Weight&#39;</span><span class="p">:</span> <span class="o">-</span><span class="mi">10</span><span class="p">}</span>
+<span class="n">Georgia</span>       <span class="n">Pablo</span>     <span class="p">{</span><span class="s1">u&#39;Weight&#39;</span><span class="p">:</span> <span class="mi">0</span><span class="p">}</span>
+<span class="n">Georgia</span>       <span class="n">Frida</span>     <span class="p">{</span><span class="s1">u&#39;Weight&#39;</span><span class="p">:</span> <span class="mi">0</span><span class="p">}</span>
+<span class="n">Georgia</span>       <span class="n">Vincent</span> <span class="p">{</span><span class="s1">u&#39;Weight&#39;</span><span class="p">:</span> <span class="mi">0</span><span class="p">}</span>
+<span class="n">Georgia</span>       <span class="n">Joan</span>      <span class="p">{</span><span class="s1">u&#39;Weight&#39;</span><span class="p">:</span> <span class="mi">0</span><span class="p">}</span>
+<span class="n">Lee</span>       <span class="n">Claude</span>      <span class="p">{</span><span class="s1">u&#39;Weight&#39;</span><span class="p">:</span> <span class="mi">0</span><span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Graph Basics</a><ul>
+<li><a class="reference internal" href="#bipartite-graph">Bipartite Graph</a></li>
+<li><a class="reference internal" href="#projected-bipartite-graph">Projected Bipartite Graph</a></li>
+<li><a class="reference internal" href="#weighted-projected-bipartite-graph">Weighted Projected Bipartite Graph</a></li>
+<li><a class="reference internal" href="#edge-types">Edge Types</a></li>
+<li><a class="reference internal" href="#node-attributes">Node Attributes</a></li>
+<li><a class="reference internal" href="#joining-two-graphs">Joining Two Graphs</a></li>
+</ul>
+</li>
+</ul>
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+  </ul></li>
+</ul>
+</div>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/networkx_basics.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2017, Jake.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.5.1</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.9</a>
+      
+      |
+      <a href="_sources/networkx_basics.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>
