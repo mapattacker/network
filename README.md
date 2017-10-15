@@ -2,5 +2,5 @@
 
 A documentation on network analysis.
 
-See more in the readthedocs site at http://pynetwork.readthedocs.io/en/latest/.
+See more in the readthedocs site at http://pynetwork.readthedocs.io
 
