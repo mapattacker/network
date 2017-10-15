@@ -81,6 +81,8 @@ To get list of nodes with partitions
 
 To check if a set of nodes is part of a bipartition of a graph:
 
+.. code:: python
+
   x = set([1,2,3,4])
   print bipartite.is_bipartite_node_set(B, x)
   # True
