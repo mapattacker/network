@@ -11,5 +11,7 @@ An introduction Networkx and Social Network Analyses.
 .. toctree::
    :maxdepth: 2
    :caption: Contents:
+   :numbered:
+   
    network_basics.rst
    network_load.rst
