@@ -95,7 +95,7 @@ To check if a set of nodes is part of a bipartition of a graph:
   
 
 Projected Bipartite Graph
---------------------------
+******************************
 
 For each partition of a Bipartite Graph, it is possible to generate a projected graph where one set of nodes have common edges to 
 the other set of nodes.
@@ -113,7 +113,7 @@ the other set of nodes.
 
 
 Weighted Projected Bipartite Graph
-----------------------------------
+***********************************
 It is also possible to get the the weights of the projected graph using the function below.
 
 .. code:: python
