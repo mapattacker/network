@@ -5,8 +5,8 @@ Loading Data as Graph
 
   import networkx as nx
 
-Format
-------
+Formats
+-------
 
 Adjacency List
 ***************

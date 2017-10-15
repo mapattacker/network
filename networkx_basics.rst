@@ -1,6 +1,9 @@
 Graph Basics
 ============
 
+Basic Graphs
+------------
+
 .. code:: python
 
   # Undirected Graph
