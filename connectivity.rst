@@ -36,7 +36,7 @@ Puts larger weight on high degree nodes.
   
   
 .. figure:: images/clustering.png
-    :width: 400px
+    :width: 600px
     :align: center
     :height: 100px
     :alt: alternate text
