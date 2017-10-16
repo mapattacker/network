@@ -54,10 +54,10 @@ Shortest distance from a start node to the end node.
 
 .. code:: python
 
-  nx.shortest_path(G,'A', 'H')
+  nx.shortest_path(G, 'A', 'H')
   # ['A', 'B', 'C', 'E', 'H']
   
-  nx.shortest_path_length(G,'A', 'H')
+  nx.shortest_path_length(G, 'A', 'H')
   # 4
   
   
@@ -77,14 +77,14 @@ from a node to all other nodes in a large network by “discovering” nodes in 
   nx.shortest_path_length(G, 'A')
   # {'A': 0, 'B': 1, 'C': 2, 'D': 4, 'E': 3, 'F': 3, 'G': 4, 'H': 4, 'I': 4, 'J': 5, 'K': 1}
   
-.. figure:: images/breadthfirst.png
-    :width: 400px
-    :align: center
-    :height: 100px
-    :alt: alternate text
-    :figclass: align-center
-
-    From University of Michigan, Python for Data Science Coursera Specialization
+.. .. figure:: images/breadthfirst.png
+..     :width: 400px
+..     :align: center
+..     :height: 100px
+..     :alt: alternate text
+..     :figclass: align-center
+.. 
+..     From University of Michigan, Python for Data Science Coursera Specialization
   
   
 Distance Measures
