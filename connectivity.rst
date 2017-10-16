@@ -78,7 +78,7 @@ from a node to all other nodes in a large network by “discovering” nodes in 
   # {'A': 0, 'B': 1, 'C': 2, 'D': 4, 'E': 3, 'F': 3, 'G': 4, 'H': 4, 'I': 4, 'J': 5, 'K': 1}
   
 .. figure:: images/breadthfirst.png
-    :width: 200px
+    :width: 400px
     :align: center
     :height: 100px
     :alt: alternate text
