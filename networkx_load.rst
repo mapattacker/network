@@ -1,4 +1,4 @@
-Loading Data as Graph
+Loading Data
 =====================
 
 .. code:: python
