@@ -108,7 +108,7 @@ Distance Measures
 .. code:: python
 
   nx.eccentricity(G)
-  .. {'A': 5, 'B': 4, 'C': 3, 'D': 4, 'E': 3, 'F': 3, 'G': 4, 'H': 4, 'I': 4, 'J': 5, 'K': 5}  
+  # {'A': 5, 'B': 4, 'C': 3, 'D': 4, 'E': 3, 'F': 3, 'G': 4, 'H': 4, 'I': 4, 'J': 5, 'K': 5}  
 
 
 **Radius** of a graph is the minimum eccentricity.
@@ -116,7 +116,7 @@ Distance Measures
 .. code:: python
 
   nx.radius(G)
-  .. 3
+  # 3
   
 
 **Periphery** of a graph is the set of nodes that have eccentricity equal to the diameter.
