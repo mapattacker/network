@@ -63,8 +63,9 @@ Shortest distance from a start node to the end node.
   
 Breadth First Search
 *********************
+Find the distance from one node to all other nodes.
 
-A systematic and efficient procedure for computing distances 
+One method is the Breadth First Search, which is a systematic and efficient procedure for computing distances 
 from a node to all other nodes in a large network by “discovering” nodes in layers.
 
 .. code:: python
