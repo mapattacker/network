@@ -105,6 +105,14 @@ An adjacency matrix can also be loaded back to a graph
   G3.edges()
 
 
+Pickle > Graph
+--------------
+
+.. code:: python
+
+  G = nx.read_gpickle('major_us_cities')
+
+
 SQL > DataFrame > Graph
 ------------------------
 
