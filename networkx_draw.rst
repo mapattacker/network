@@ -64,7 +64,8 @@ Label Specific Nodes
 
 .. code:: python
 
-  nx.draw_networkx_labels(G, pos, labels={'Los Angeles, CA': 'LA', 'New York, NY': 'NYC'}, font_size=18, font_color='w')
+  nx.draw_networkx_labels(G, pos, labels={'Los Angeles, CA': 'LA', 'New York, NY': 'NYC'}, \
+                          font_size=18, font_color='w')
   
   
 Specific Edges Widths
