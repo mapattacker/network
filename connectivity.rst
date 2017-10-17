@@ -241,3 +241,45 @@ What is the smallest number of edges that can be removed from this graph in orde
   .. {('A', 'G'), ('O', 'J')}
 
 
+Disconnect Path
+****************
+
+Imagine node G wants to send a message to node L by passing it along to other nodes in this network.
+
+.. code:: python
+
+  sorted(nx.all_simple_paths(G, 'G', 'L')) 
+  # [['G', 'A', 'N', 'L'],
+  # ['G', 'A', 'N', 'O', 'K', 'L'],
+  # ['G', 'A', 'N', 'O', 'L'],
+  # ['G', 'J', 'O', 'K', 'L'], ['G', 'J', 'O', 'L']]
+
+**Disconnect by Node**
+
+If we wanted to block the message from G to L by removing nodes from the network, 
+how many nodes would we need to remove?
+
+.. code:: python
+
+  nx.node_connectivity(G, 'G', 'L') 
+  .. 2
+  
+  # Which nodes?
+  nx.minimum_node_cut(G, 'G', 'L') 
+  .. {'N', 'O'}
+  
+**Disconnect by Edge**
+
+If we wanted to block the message from G to L by removing edges from the network, 
+how many edges would we need to remove?
+
+.. code:: python
+
+  nx.edge_connectivity(G, 'G', 'L') 
+  .. 2
+  
+  # Which edges?
+  nx.minimum_edge_cut(G, 'G', 'L') 
+  .. {('A', 'N'), ('J', 'O')}
+  
+  
