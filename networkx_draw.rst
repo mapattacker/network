@@ -67,7 +67,7 @@ Label Specific Nodes
   nx.draw_networkx_labels(G, pos, labels={'Los Angeles, CA': 'LA', 'New York, NY': 'NYC'}, font_size=18, font_color='w')
   
   
-Label Specific Edges
+Specific Edges Widths
 ----------------------
 
 .. code:: python
@@ -78,7 +78,7 @@ Label Specific Edges
   nx.draw_networkx_edges(g, pos, edgelist=path_edges, edge_color='r', width=15)
   
   
-  # another example
+  # Weights > 770
   greater_than_770 = [x for x in G.edges(data=True) if x[2]['weight']>770]
   nx.draw_networkx_edges(G, pos, edgelist=greater_than_770, edge_color='r', alpha=0.4, width=6)
 
