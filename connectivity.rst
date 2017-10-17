@@ -201,5 +201,43 @@ A strongly connected graph component (subset of nodes) have
 
 
 
+Network Robustness
+-------------------
+  
+Network robustness the ability of a network to maintain its 
+general structural properties (connectivity) 
+when it faces failures or attacks (removal of nodes or edges).
+
+
+Disconnect a Graph
+******************
+
+**Disconnect by Node**
+
+What is the smallest number of nodes that can be removed from this graph in order to disconnect it?
+
+
+.. code:: python
+
+  nx.node_connectivity(G_un) 
+  .. 1
+  
+  # Which node?
+  nx.minimum_node_cut(G_un) 
+  .. {'A'}
+
+
+**Disconnect by Edge**
+
+What is the smallest number of edges that can be removed from this graph in order to disconnect it?
+
+.. code:: python
+
+  nx.edge_connectivity(G_un) 
+  .. 2
+  
+  # Which edges?
+  nx.minimum_edge_cut(G_un) 
+  .. {('A', 'G'), ('O', 'J')}
 
 
