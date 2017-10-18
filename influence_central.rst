@@ -78,7 +78,14 @@ Betweenness Centrality
 ----------------------
 Assumption: important nodes connect other nodes.
 
+.. figure:: images/btw_central.png
+    :width: 400px
+    :align: center
+    :height: 100px
+    :alt: alternate text
+    :figclass: align-center
 
+    From University of Michigan, Python for Data Science Coursera Specialization
 
 Basic Page Rank
 ---------------
