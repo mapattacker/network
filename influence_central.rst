@@ -65,7 +65,7 @@ It is calculated by (total number of nodes that node N can reach) - sum(shortest
   .. 0.541
   
   
-Normalisation (* constant of the total # nodes in graph) is required for directed graphs, 
+Normalisation (multiple a constant i.e., total # nodes in graph) is required for directed graphs, 
 as node in question may only reach a few nodes in the entire graph.
 
 .. code:: python
@@ -73,3 +73,19 @@ as node in question may only reach a few nodes in the entire graph.
   nx.closeness_centrality(G, normalized= True)
   closeCent[‘L’]
   .. 0.071
+  
+  
+  
+Betweenness Centrality
+----------------------
+
+
+Basic Page Rank
+---------------
+
+Scaled Page Rank
+----------------
+
+
+Hubs & Authorities
+-------------------
