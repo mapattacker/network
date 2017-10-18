@@ -6,6 +6,7 @@ Clustering
 ----------------
 Clustering coefficients measures the degree to which nodes in a network tend to cluster or form triangles.
 
+
 Local Clustering Coefficient
 *****************************
 Find the clustering of a particular node.
@@ -16,6 +17,7 @@ Find the clustering of a particular node.
 
   # G is a graph, A is a node
   nx.clustering(G, 'A') 
+
 
 Global Clustering Coefficient
 *****************************
