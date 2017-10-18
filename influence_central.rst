@@ -10,7 +10,8 @@ Degree Centrality
 *****************
 Assumption: Important nodes have many connections.
 
-**Undirected networks**: Use degree
+**Undirected networks**: Use degree.
+
 𝐶𝑣 = d𝑣/(𝑁 - 1)
 where 𝑁 is total number of nodes. Minus 1 to remove node in question
 𝑑 is the degree of node 𝑣.
@@ -39,7 +40,7 @@ where 𝑁 is total number of nodes. Minus 1 to remove node in question
 Closeness Centrality
 *********************
 Assumption: important nodes are close to other nodes. 
-It is calculated by total number of nodes - sum(shortest path of node).
+It is calculated by (total number of nodes that node N can reach) - sum(shortest path of node N).
 
 .. figure:: images/closeness_centrality.png
     :width: 400px
@@ -62,3 +63,13 @@ It is calculated by total number of nodes - sum(shortest path of node).
   .. 61
   (len(G.nodes())-1)/61.
   .. 0.541
+  
+  
+Normalisation (* constant of the total # nodes in graph) is required for directed graphs, 
+as node in question may only reach a few nodes in the entire graph.
+
+.. code:: python
+
+  nx.closeness_centrality(G, normalized= True)
+  closeCent[‘L’]
+  .. 0.071
