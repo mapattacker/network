@@ -21,7 +21,6 @@ Basic Graphs
   G.add_edge('A','B')
   G.add_edge('B','C')
   
-  
   # Directed Graph
   D = nx.DiGraph()
   D.add_edge('B','A')
@@ -38,6 +37,14 @@ Basic Graphs
   M.is_multigraph()
   # True
 
+  # Directed Multi-Graph
+  DM = nx.MultiDiGraph()
+  DM.add_edge('B','A')
+  DM.add_edge('B','C')
+  # Check
+  DM.is_multigraph()
+  # True
+  
 
 Bipartite Graph
 ---------------
