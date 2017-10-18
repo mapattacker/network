@@ -8,6 +8,9 @@ Network Analysis Documentation
 
 An introduction Networkx and Social Network Analyses.
 
+More details in the official Networkx documentation.
+https://networkx.github.io/documentation/networkx-1.9/index.html
+
 .. toctree::
    :maxdepth: 2
    :caption: Contents:

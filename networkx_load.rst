@@ -67,7 +67,7 @@ We can use ``nx.read_edgelist()`` to transform it into a graph network.
 
 .. code:: python
 
-  G4 = nx.read_edgelist('G_edgelist.txt', data=[('Weight', int)], , delimiter='\t')
+  G4 = nx.read_edgelist('G_edgelist.txt', data=[('Weight', int)], delimiter='\t')
   
 
 For multiple edge attributes and graph definition, we have addition definitions in the ``read_edgelist()`` function.
