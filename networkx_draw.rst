@@ -33,6 +33,7 @@ Basic Chart
   pos = nx.random_layout(G)
   
   # draw network
+  # nx.draw() also can, but has no axes
   nx.draw_networkx(G, pos, with_labels = True, node_size=800, node_color='pink', \
                            alpha=0.7, edge_color='grey', width=1)
   
