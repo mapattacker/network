@@ -93,11 +93,11 @@ over the total # shortest paths from the sources to targets.
     From University of Michigan, Python for Data Science Coursera Specialization
 
 
-**End Points** Whether to include or exclude node v from as a source/target
+**End Points**. Whether to include or exclude node v from as a source/target
  
-**Normalization** Divide by number of pairs of nodes.
+**Normalization**. Divide by number of pairs of nodes.
 
-**Approximation** Computing betweenness centrality can be computationally expensive.
+**Approximation**. Computing betweenness centrality can be computationally expensive.
 We can approximate computation by taking a subset of nodes.
 
 .. code:: python
@@ -114,7 +114,7 @@ We can approximate computation by taking a subset of nodes.
   # (3, 0.14365680615680618),
   # (32, 0.13827561327561325)]
 
-**Subsets** We can define subsets of source and target nodes to compute betweenness centrality.
+**Subsets**. We can define subsets of source and target nodes to compute betweenness centrality.
 
 .. code:: python
 
@@ -129,7 +129,7 @@ We can approximate computation by taking a subset of nodes.
   # (33, 0.01664712602212602),
   # (9, 0.014519450456950456)]
 
-**Edge betweenness centrality** We can apply the same framework to find important edges instead of nodes.
+**Edge betweenness centrality**. We can apply the same framework to find important edges instead of nodes.
 
 .. code:: python
 
