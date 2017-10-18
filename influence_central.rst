@@ -1,13 +1,11 @@
 Influence Measures and Network Centralization
 ===============================================
 
-Node Importance
-----------------
-Centrality measures identify the most important nodes in a network.
+Centrality and other measures identify the most important nodes in a network.
 
 
 Degree Centrality
-*****************
+-------------------
 Assumption: Important nodes have many connections.
 
 **Undirected networks**: Use degree.
@@ -38,7 +36,7 @@ where 𝑁 is total number of nodes. Minus 1 to remove node in question
   
 
 Closeness Centrality
-*********************
+---------------------
 Assumption: important nodes are close to other nodes. 
 It is calculated by (total number of nodes that node N can reach) - sum(shortest path of node N).
 
@@ -65,7 +63,7 @@ It is calculated by (total number of nodes that node N can reach) - sum(shortest
   .. 0.541
   
   
-Normalisation (multiple a constant i.e., total # nodes in graph) is required for directed graphs, 
+Normalisation (multiply a constant i.e., total # nodes in graph) is required for directed graphs, 
 as node in question may only reach a few nodes in the entire graph.
 
 .. code:: python
@@ -78,6 +76,8 @@ as node in question may only reach a few nodes in the entire graph.
   
 Betweenness Centrality
 ----------------------
+Assumption: important nodes connect other nodes.
+
 
 
 Basic Page Rank
