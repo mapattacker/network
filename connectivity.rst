@@ -60,6 +60,7 @@ Shortest distance from a start node to the end node.
   nx.shortest_path_length(G, 'A', 'H')
   # 4
 
+
 Longest Path
 ************
 
@@ -84,8 +85,23 @@ Longest Path
 
   nx.radius(G)
   # 3
-    
-    
+  
+**Periphery** of a graph is the set of nodes that have eccentricity equal to the diameter.
+
+.. code:: python
+
+  nx.periphery(G)
+  # ['A', 'K', 'J']
+
+
+**Center** of a graph is the set of nodes that have eccentricity equal to the radius.
+
+.. code:: python
+
+  nx.center(G)
+  # ['C', 'E', 'F']
+
+
 Breadth First Search
 *********************
 Find the distance from one node to all other nodes.
@@ -97,7 +113,8 @@ from a node to all other nodes in a large network by “discovering” nodes in 
 
   T = nx.bfs_tree(G, 'A') 
   T.edges()
-  # [('A', 'K'), ('A', 'B'), ('B', 'C'), ('C', 'E'), ('C', 'F'), ('E', 'I'), ('E', 'H'), ('E', 'D'), ('F', 'G'), ('I', 'J')]
+  # [('A', 'K'), ('A', 'B'), ('B', 'C'), ('C', 'E'), ('C', 'F'), 
+  # ('E', 'I'), ('E', 'H'), ('E', 'D'), ('F', 'G'), ('I', 'J')]
   
   nx.shortest_path_length(G, 'A')
   # {'A': 0, 'B': 1, 'C': 2, 'D': 4, 'E': 3, 'F': 3, 'G': 4, 'H': 4, 'I': 4, 'J': 5, 'K': 1}
@@ -121,22 +138,6 @@ Other Distance Measures
 
   nx.average_shortest_path_length(G)
   # 2.52727272727
-  
-
-**Periphery** of a graph is the set of nodes that have eccentricity equal to the diameter.
-
-.. code:: python
-
-  nx.periphery(G)
-  # ['A', 'K', 'J']
-
-
-**Center** of a graph is the set of nodes that have eccentricity equal to the radius.
-
-.. code:: python
-
-  nx.center(G)
-  # ['C', 'E', 'F']
   
   
 Connectivity
