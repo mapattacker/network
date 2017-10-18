@@ -228,6 +228,9 @@ What is the smallest number of nodes that can be removed from this graph in orde
   # Which node?
   nx.minimum_node_cut(G_un) 
   .. {'A'}
+  
+  # can also choose source & target
+  nx.minimum_node_cut(G, 3, 7)
 
 
 **Disconnect by Edge**

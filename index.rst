@@ -20,3 +20,4 @@ https://networkx.github.io/documentation/networkx-1.9/index.html
    networkx_load.rst
    networkx_draw.rst
    connectivity.rst
+   influence_central.rst
