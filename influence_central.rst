@@ -38,7 +38,7 @@ where 𝑁 is total number of nodes. Minus 1 to remove node in question
 Closeness Centrality
 ---------------------
 Assumption: important nodes are close to other nodes. 
-It is calculated by (total number of nodes that node N can reach) - sum(shortest path of node N).
+It is calculated by (total number of nodes that node N can reach) / sum(shortest path of node N).
 
 .. figure:: images/closeness_centrality.png
     :width: 400px
