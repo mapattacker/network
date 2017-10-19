@@ -184,6 +184,28 @@ Important nodes are those with many in-links from important pages.
 Scaled Page Rank
 ----------------
 
+ - The Basic PageRank of a node can be interpreted as the probability that a random walk lands on the node after 𝑘 random steps.
+ - Basic PageRank has the problem that, in some networks, a few nodes can “suck up” all the PageRank from the network.
+ - To fix this problem, Scaled PageRank introduces a parameter 𝛼, such that the random walker chooses a random node to jump to with probability 1 − 𝛼.
+ - Typically we use 𝛼 between 0.8 and 0.9
+ - NetworkX function ``pagerank(G, alpha=0.8)`` computes Scaled PageRank of network G with damping parameter 𝛼=0.8.
 
-Hubs & Authorities
+
+HITS Algorithm
 -------------------
+Hyperlink-Induced Topic Search (HITS; also known as hubs and authorities) is a link analysis algorithm that rates Web pages.
+
+Comparison
+----------
+The best centrality measure depends on the context of the network one is analysing.
+
+When identifying different nodes, best to use multiple centrality measures instead of a single one.
+
+.. figure:: images/comparison.png
+    :width: 400px
+    :align: center
+    :height: 100px
+    :alt: alternate text
+    :figclass: align-center
+
+    From University of Michigan, Python for Data Science Coursera Specialization
