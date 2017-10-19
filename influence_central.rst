@@ -149,6 +149,37 @@ We can approximate computation by taking a subset of nodes.
 
 Basic Page Rank
 ---------------
+PageRank assigns a score of importance to each node. 
+Important nodes are those with many in-links from important pages.
+
+.. figure:: images/pagerank1.png
+    :width: 400px
+    :align: center
+    :height: 100px
+    :alt: alternate text
+    :figclass: align-center
+
+    From University of Michigan, Python for Data Science Coursera Specialization
+    
+
+.. figure:: images/pagerank2.png
+    :width: 400px
+    :align: center
+    :height: 100px
+    :alt: alternate text
+    :figclass: align-center
+
+    From University of Michigan, Python for Data Science Coursera Specialization
+    
+**Steps of Basic PageRank**
+
+ 1. All nodes start with PageRank of 1/𝑛
+ 2. Perform the Basic PageRank Update Rule k times:
+
+**Summary**
+ – Basic Page Rank Update Rule: Each node gives an equal share of its current PageRank to all the nodes it links to.
+ – The new Page Rank of each node is the sum of all the Page Rank it received from other nodes.
+ - For most networks, PageRank values converge as k gets larger (𝑘 → ∞)
 
 Scaled Page Rank
 ----------------
