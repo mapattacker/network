@@ -177,6 +177,7 @@ Important nodes are those with many in-links from important pages.
  2. Perform the Basic PageRank Update Rule k times:
 
 **Summary**
+
  – Basic Page Rank Update Rule: Each node gives an equal share of its current PageRank to all the nodes it links to.
  – The new Page Rank of each node is the sum of all the Page Rank it received from other nodes.
  - For most networks, PageRank values converge as k gets larger (𝑘 → ∞)
