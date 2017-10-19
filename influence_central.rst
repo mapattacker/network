@@ -195,6 +195,13 @@ HITS Algorithm
 -------------------
 Hyperlink-Induced Topic Search (HITS; also known as hubs and authorities) is a link analysis algorithm that rates Web pages.
 
+* The HITS algorithm starts by constructing a root set of relevant web pages and expanding it to a base set.
+* HITS then assigns an authority and hub score to each node in the network.
+* Nodes that have incoming edges from good hubs are good authorities, and nodes that have outgoing edges to good authorities are good hubs.
+* Authority and hub scores converge for most networks.
+* You can use NetworkX function hits(G) to compute the hub and authority
+scores of network G
+
 Comparison
 ----------
 The best centrality measure depends on the context of the network one is analysing.
