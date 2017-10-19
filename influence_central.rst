@@ -202,7 +202,7 @@ The best centrality measure depends on the context of the network one is analysi
 When identifying different nodes, best to use multiple centrality measures instead of a single one.
 
 .. figure:: images/comparison.png
-    :width: 400px
+    :width: 600px
     :align: center
     :height: 100px
     :alt: alternate text
