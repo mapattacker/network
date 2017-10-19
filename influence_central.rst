@@ -1,4 +1,4 @@
-Influence Measures and Network Centralization
+Network Centrality
 ===============================================
 
 Centrality and other measures identify the most important nodes in a network.
