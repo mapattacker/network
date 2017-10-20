@@ -188,7 +188,7 @@ Scaled Page Rank
  - Basic PageRank has the problem that, in some networks, a few nodes can “suck up” all the PageRank from the network.
  - To fix this problem, Scaled PageRank introduces a parameter 𝛼, such that the random walker chooses a random node to jump to with probability 1 − 𝛼.
  - Typically we use 𝛼 between 0.8 and 0.9
- - NetworkX function ``pagerank(G, alpha=0.8)`` computes Scaled PageRank of network G with damping parameter 𝛼=0.8.
+ - NetworkX function ``nx.pagerank(G, alpha=0.8)`` computes Scaled PageRank of network G with damping parameter 𝛼=0.8.
 
 
 HITS Algorithm
@@ -199,7 +199,7 @@ Hyperlink-Induced Topic Search (HITS; also known as hubs and authorities) is a l
 * HITS then assigns an authority and hub score to each node in the network.
 * Nodes that have incoming edges from good hubs are good authorities, and nodes that have outgoing edges to good authorities are good hubs.
 * Authority and hub scores converge for most networks.
-* You can use NetworkX function hits(G) to compute the hub and authority
+* You can use NetworkX function ``nx.hits(G)`` to compute the hub and authority
 scores of network G
 
 Comparison
