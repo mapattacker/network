@@ -1,4 +1,4 @@
-Network Connectivity
+Connectivity
 ====================
 
 

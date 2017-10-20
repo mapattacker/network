@@ -21,3 +21,4 @@ https://networkx.github.io/documentation/networkx-2.0/index.html
    networkx_draw.rst
    connectivity.rst
    influence_central.rst
+   evolution.rst
