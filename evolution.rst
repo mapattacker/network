@@ -19,15 +19,17 @@ The **degree distribution** of a graph is the probability distribution of the de
   plt.ylabel('Fraction of Nodes') 
   plt.show()
 
+
 .. figure:: images/degreed.png
-    :width: 600px
+    :width: 400px
     :align: center
     :height: 100px
     :alt: alternate text
     :figclass: align-center
 
     From University of Michigan, Python for Data Science Coursera Specialization
-  
+
+
 Preferential Attachment
 ------------------------
 The degree distribution of a graph is the probability distribution of the degrees over the entire network.
