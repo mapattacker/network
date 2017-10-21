@@ -110,6 +110,9 @@ Link Prediction
 ----------------
 Given a network, can we predict which edges will be formed in the future?
 
+Typically use these measures as features. And then you would use a classifier, 
+if you have some label data, you would train a classifier and use these measures as features in order to make the prediction. 
+
 Common Neighbours
 ********************
 The number of common neighbors of nodes 𝑋 and 𝑌.
@@ -273,6 +276,18 @@ Number of common neighbors with bonus for neighbors in same community.
     From University of Michigan, Python for Data Science Coursera Specialization
     
 .. code:: python
+
+  # add node attribute to differentiate between communities
+  G.node['A']['community'] = 0 
+  G.node['B']['community'] = 0 
+  G.node['C']['community'] = 0 
+  G.node['D']['community'] = 0 
+  G.node['E']['community'] = 1 
+  G.node['F']['community'] = 1 
+  G.node['G']['community'] = 1 
+  G.node['H']['community'] = 1 
+  G.node['I']['community'] = 1
+
 
   L = list(nx.cn_soundarajan_hopcroft(G))
   
