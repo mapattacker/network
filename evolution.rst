@@ -71,3 +71,36 @@ Each new node attaches to m existing nodes according to the Preferential Attachm
 Small World Model
 ------------------
 Social networks tend to have high clustering coefficient and small average path length.
+
+ • Start with a ring of 𝑛 nodes, where each node is connected to its 𝑘 nearest neighbors.
+ • Fix a parameter 𝑝 ∈ [0,1]
+ • Consider each edge 𝑢, 𝑣 . With probability 𝑝, select a node 𝑤 at random and rewire the edge (𝑢, 𝑣) so it becomes (𝑢, 𝑤).
+
+.. code:: python
+
+  G = nx.watts_strogatz_graph(1000,6,0.04)
+  degrees = G.degree()
+  degree_values = sorted(set(degrees.values()))
+  histogram = [list(degrees.values()).count(i)/float(nx.number_of_node s(G)) \
+                for i in degree_values]
+
+  import matplotlib.pyplot as plt
+
+  plt.bar(degree_values,histogram)
+  plt.xlabel('Degree')
+  plt.ylabel('Fraction of Nodes')
+  plt.show()
+
+
+Variants of the small world model in NetworkX:
+
+• Small world networks can be disconnected, which is sometime undesirable.
+
+``nx.connected_watts_strogatz_graph(n, k, p, t)`` runs watts_strogatz_graph(n, k, p) up to t times, 
+until it returns a connected small world network.
+
+• ``nx.newman_watts_strogatz_graph(n, k, p)`` runs a model similar to the small world model, 
+but rather than rewiring edges, new edges are added with probability 𝑝.
+
+
+
