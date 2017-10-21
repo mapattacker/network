@@ -91,7 +91,13 @@ Social networks tend to have high clustering coefficient and small average path 
   plt.ylabel('Fraction of Nodes')
   plt.show()
 
-
+.. figure:: images/smallworld.png
+    :width: 400px
+    :align: center
+    :height: 100px
+    :alt: alternate text
+    :figclass: align-center
+    
 Variants of the small world model in NetworkX:
 
 • Small world networks can be disconnected, which is sometime undesirable.
