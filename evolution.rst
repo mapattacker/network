@@ -34,9 +34,10 @@ Preferential Attachment Model
 -----------------------------
 The degree distribution of a graph is the probability distribution of the degrees over the entire network.
 
- • Many real networks have degree distributions that look like power laws (𝑃𝑘 =C𝑘^-a).
- • Models of network generation allow us to identify mechanisms that give rise to observed patterns in real data.
- • The Preferential Attachment Model produces networks with a power law degree distribution.
+ * Many real networks have degree distributions that look like power laws (𝑃𝑘 =C𝑘^-a).
+ * Networks with a power law distribution have many nodes with small degree and a few nodes with very large degree.
+ * Models of network generation allow us to identify mechanisms that give rise to observed patterns in real data.
+ * The Preferential Attachment Model produces networks with a power law degree distribution.
 
  .. figure:: images/degreed2.png
      :width: 600px
@@ -175,6 +176,8 @@ Number of common neighbors normalized by the total number of neighbors.
 Resource Allocation
 ********************
 Fraction of a ”resource” that a node can send to another through their common neighbors.
+Penalises when common neighbors have high degree of other neighbors as resource will be passed to others.
+High coefficient when common neighbors have low degree.
 
 .. figure:: images/resource.png
     :width: 600px
