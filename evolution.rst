@@ -100,13 +100,31 @@ Social networks tend to have high clustering coefficient and small average path 
     
 Variants of the small world model in NetworkX:
 
-• Small world networks can be disconnected, which is sometime undesirable.
+ • Small world networks can be disconnected, which is sometime undesirable.
+ • ``nx.connected_watts_strogatz_graph(n, k, p, t)`` runs watts_strogatz_graph(n, k, p) up to t times, until it returns a connected small world network.
+ • ``nx.newman_watts_strogatz_graph(n, k, p)`` runs a model similar to the small world model, sbut rather than rewiring edges, new edges are added with probability 𝑝.
 
-``nx.connected_watts_strogatz_graph(n, k, p, t)`` runs watts_strogatz_graph(n, k, p) up to t times, 
-until it returns a connected small world network.
+Link Prediction
+----------------
+Given a network, can we predict which edges will be formed in the future?
 
-• ``nx.newman_watts_strogatz_graph(n, k, p)`` runs a model similar to the small world model, 
-but rather than rewiring edges, new edges are added with probability 𝑝.
+Common Neighbours
+********************
 
+Jaccard Coefficient
+********************
 
+Resource Allocation
+********************
 
+Adamic-Adar Index
+********************
+
+Preferential Attachment
+***********************
+
+Community Common Neighbors
+**************************
+
+Community Resource Allocation
+*****************************
