@@ -98,6 +98,8 @@ Social networks tend to have high clustering coefficient and small average path 
     :alt: alternate text
     :figclass: align-center
     
+    From University of Michigan, Python for Data Science Coursera Specialization
+    
 Variants of the small world model in NetworkX:
 
  • Small world networks can be disconnected, which is sometime undesirable.
@@ -110,21 +112,116 @@ Given a network, can we predict which edges will be formed in the future?
 
 Common Neighbours
 ********************
+The number of common neighbors of nodes 𝑋 and 𝑌.
+
+.. figure:: images/neighbour.png
+    :width: 600px
+    :align: center
+    :height: 100px
+    :alt: alternate text
+    :figclass: align-center
+    
+    From University of Michigan, Python for Data Science Coursera Specialization
+
+.. code:: python
+
+  common_neigh = [(e[0], e[1], len(list(nx.common_neighbors(G, e[0], e[1])))) \
+                  for e in nx.non_edges(G)]
+  
+  sorted(common_neigh,key=operator.itemgetter(2), reverse = True 
+  print (common_neigh)
+  # [('A', 'C', 2), ('A', 'G', 1), ('A', 'F', 1), 
+  # ('C', 'E', 1), ('C', 'G', 1), ('B', 'E', 1), 
+  # ('B', 'F', 1), ('E', 'I', 1), ('E', 'H', 1), 
+  # ('E', 'D', 1), ('D', 'F', 1), ('F', 'I', 1), 
+  # ('F', 'H', 1), ('I', 'H', 1), ('A', 'I', 0), 
+  # ('A', 'H', 0), ('C', 'I', 0), ('C', 'H', 0), 
+  # ('B', 'I', 0), ('B', 'H', 0), ('B', 'G', 0), 
+  # ('D', 'I', 0), ('D', 'H', 0), ('D', 'G', 0)]
+
 
 Jaccard Coefficient
 ********************
+Number of common neighbors normalized by the total number of neighbors.
+
+.. figure:: images/jaccard.png
+    :width: 400px
+    :align: center
+    :height: 100px
+    :alt: alternate text
+    :figclass: align-center
+    
+    From University of Michigan, Python for Data Science Coursera Specialization
+
+.. code:: python
+
+  L = list(nx.jaccard_coefficient(G))
+  
+  L.sort(key=operator.itemgetter(2), reverse = True)
+  print(L)
+  # [('I', 'H', 1.0), ('A', 'C', 0.5), ('E', 'I', 0.3333333333333333), 
+  # ('E', 'H', 0.3333333333333333), ('F', 'I', 0.3333333333333333), 
+  # ('F', 'H', 0.3333333333333333), ('A', 'F', 0.2), ('C', 'E', 0.2), 
+  # ('B', 'E', 0.2), ('B', 'F', 0.2), ('E', 'D', 0.2), ('D', 'F', 0.2), 
+  # ('A', 'G', 0.16666666666666666), ('C', 'G', 0.16666666666666666), 
+  # ('A', 'I', 0.0), ('A', 'H', 0.0), ('C', 'I', 0.0), ('C', 'H', 0.0), 
+  # ('B', 'I', 0.0), ('B', 'H', 0.0), ('B', 'G', 0.0), ('D', 'I', 0.0), 
+  # ('D', 'H', 0.0), ('D', 'G', 0.0)]
+
 
 Resource Allocation
 ********************
+Fraction of a ”resource” that a node can send to another through their common neighbors.
+
+.. figure:: images/resource.png
+    :width: 400px
+    :align: center
+    :height: 100px
+    :alt: alternate text
+    :figclass: align-center
+    
+    From University of Michigan, Python for Data Science Coursera Specialization
+    
+.. code:: python
+
+  L = list(nx.resource_allocation_index(G))
+  
+  L.sort(key=operator.itemgetter(2), reverse = True)
+  print(L)
+  # [('A', 'C', 0.6666666666666666), ('A', 'G', 0.3333333333333333), 
+  # ('A', 'F', 0.3333333333333333), ('C', 'E', 0.3333333333333333), 
+  # ('C', 'G', 0.3333333333333333), ('B', 'E', 0.3333333333333333), 
+  # ('B', 'F', 0.3333333333333333), ('E', 'D', 0.3333333333333333), 
+  # ('D', 'F', 0.3333333333333333), ('E', 'I', 0.25), ('E', 'H', 0.25), 
+  # ('F', 'I', 0.25), ('F', 'H', 0.25), ('I', 'H', 0.25), ('A', 'I', 0), 
+  # ('A', 'H', 0), ('C', 'I', 0), ('C', 'H', 0), ('B', 'I', 0), 
+  # ('B', 'H', 0), ('B', 'G', 0), ('D', 'I', 0), ('D', 'H', 0), ('D', 'G', 0)]
+
 
 Adamic-Adar Index
 ********************
 
+
+.. code:: python
+
+
 Preferential Attachment
 ***********************
+
+
+.. code:: python
+
 
 Community Common Neighbors
 **************************
 
+
+.. code:: python
+
+
 Community Resource Allocation
 *****************************
+
+
+.. code:: python
+
