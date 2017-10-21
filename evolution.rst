@@ -263,7 +263,7 @@ Pairs of nodes who belong to the same community and have many common neighbors i
 
 Number of common neighbors with bonus for neighbors in same community.
 
-.. figure:: images/ccneigh.png
+.. figure:: images/cneigh.png
     :width: 600px
     :align: center
     :height: 100px
