@@ -145,7 +145,7 @@ Jaccard Coefficient
 Number of common neighbors normalized by the total number of neighbors.
 
 .. figure:: images/jaccard.png
-    :width: 400px
+    :width: 600px
     :align: center
     :height: 100px
     :alt: alternate text
@@ -174,7 +174,7 @@ Resource Allocation
 Fraction of a ”resource” that a node can send to another through their common neighbors.
 
 .. figure:: images/resource.png
-    :width: 400px
+    :width: 600px
     :align: center
     :height: 100px
     :alt: alternate text
@@ -200,28 +200,114 @@ Fraction of a ”resource” that a node can send to another through their commo
 
 Adamic-Adar Index
 ********************
+Similar to resource allocation index, but with log in the denominator.
 
-
+.. figure:: images/aadar.png
+    :width: 600px
+    :align: center
+    :height: 100px
+    :alt: alternate text
+    :figclass: align-center
+    
+    From University of Michigan, Python for Data Science Coursera Specialization
+    
 .. code:: python
+
+  L = list(nx.adamic_adar_index(G))
+  
+  L.sort(key=operator.itemgetter(2), reverse = True)
+  print(L)
+  # [('A', 'C', 1.8204784532536746), ('A', 'G', 0.9102392266268373), 
+  # ('A', 'F', 0.9102392266268373), ('C', 'E', 0.9102392266268373), 
+  # ('C', 'G', 0.9102392266268373), ('B', 'E', 0.9102392266268373), 
+  # ('B', 'F', 0.9102392266268373), ('E', 'D', 0.9102392266268373), 
+  # ('D', 'F', 0.9102392266268373), ('E', 'I', 0.7213475204444817), 
+  # ('E', 'H', 0.7213475204444817), ('F', 'I', 0.7213475204444817), 
+  # ('F', 'H', 0.7213475204444817), ('I', 'H', 0.7213475204444817), 
+  # ('A', 'I', 0), ('A', 'H', 0), ('C', 'I', 0), ('C', 'H', 0), 
+  # ('B', 'I', 0), ('B', 'H', 0), ('B', 'G', 0), ('D', 'I', 0), ('D', 'H', 0), ('D', 'G', 0)]
 
 
 Preferential Attachment
 ***********************
+In the preferential attachment model, nodes with high degree get more neighbors.
 
-
+.. figure:: images/prefa.png
+    :width: 600px
+    :align: center
+    :height: 100px
+    :alt: alternate text
+    :figclass: align-center
+    
+    From University of Michigan, Python for Data Science Coursera Specialization
+    
 .. code:: python
+
+  L = list(nx.preferential_attachment(G))
+  
+  L.sort(key=operator.itemgetter(2), reverse = True)
+  print(L)
+  # [('A', 'G', 12), ('C', 'G', 12), ('B', 'G', 12), ('D', 'G', 12), 
+  # ('A', 'C', 9), ('A', 'F', 9), ('C', 'E', 9), ('B', 'E', 9), 
+  # ('B', 'F', 9), ('E', 'D', 9), ('D', 'F', 9), ('A', 'I', 3), 
+  # ('A', 'H', 3), ('C', 'I', 3), ('C', 'H', 3), ('B', 'I', 3), 
+  # ('B', 'H', 3), ('E', 'I', 3), ('E', 'H', 3), ('D', 'I', 3), 
+  # ('D', 'H', 3), ('F', 'I', 3), ('F', 'H', 3), ('I', 'H', 1)]
 
 
 Community Common Neighbors
 **************************
+Some measures consider the community structure of the network for link prediction.
+Assume the nodes in this network belong to different communities (sets of nodes).
+Pairs of nodes who belong to the same community and have many common neighbors in their community are likely to form an edge.
 
+Number of common neighbors with bonus for neighbors in same community.
 
+.. figure:: images/ccneigh.png
+    :width: 600px
+    :align: center
+    :height: 100px
+    :alt: alternate text
+    :figclass: align-center
+    
+    From University of Michigan, Python for Data Science Coursera Specialization
+    
 .. code:: python
+
+  L = list(nx.cn_soundarajan_hopcroft(G))
+  
+  L.sort(key=operator.itemgetter(2), reverse = True) print(L)
+  # [('A', 'C', 4), ('E', 'I', 2), ('E', 'H', 2), ('F', 'I', 2), 
+  # ('F', 'H', 2), ('I', 'H', 2), ('A', 'G', 1), ('A', 'F', 1), 
+  # ('C', 'E', 1), ('C', 'G', 1), ('B', 'E', 1), ('B', 'F', 1), 
+  # ('E', 'D', 1), ('D', 'F', 1), ('A', 'I', 0), ('A', 'H', 0), 
+  # ('C', 'I', 0), ('C', 'H', 0), ('B', 'I', 0), ('B', 'H', 0), 
+  # ('B', 'G', 0), ('D', 'I', 0), ('D', 'H', 0), ('D', 'G', 0)]
 
 
 Community Resource Allocation
 *****************************
+Similar to resource allocation index, but only considering nodes in the same community
 
-
+.. figure:: images/cresource.png
+    :width: 600px
+    :align: center
+    :height: 100px
+    :alt: alternate text
+    :figclass: align-center
+    
+    From University of Michigan, Python for Data Science Coursera Specialization
+    
 .. code:: python
 
+  L = list(nx.ra_index_soundarajan_hopcroft(G)) 
+  
+  L.sort(key=operator.itemgetter(2), reverse = True) 
+  print(L)
+  # [('A', 'C', 0.6666666666666666), ('E', 'I', 0.25), 
+  # ('E', 'H', 0.25), ('F', 'I', 0.25), ('F', 'H', 0.25), 
+  # ('I', 'H', 0.25), ('A', 'I', 0), ('A', 'H', 0), ('A', 'G', 0), 
+  # ('A', 'F', 0), ('C', 'I', 0), ('C', 'H', 0), ('C', 'E', 0), 
+  # ('C', 'G', 0), ('B', 'I', 0), ('B', 'H', 0), ('B', 'E', 0), 
+  # ('B', 'G', 0), ('B', 'F', 0), ('E', 'D', 0), ('D', 'I', 0), 
+  # ('D', 'H', 0), ('D', 'G', 0), ('D', 'F', 0)]
