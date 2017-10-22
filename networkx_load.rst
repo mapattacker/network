@@ -190,6 +190,17 @@ which can also easily be added to our dataframe.
   df['clustering'] = pd.Series(nx.clustering(G))
   df['degree'] = pd.Series(G.degree())
 
+
+.. figure:: images/load_node.png
+    :width: 400px
+    :align: center
+    :height: 100px
+    :alt: alternate text
+    :figclass: align-center
+
+    From University of Michigan, Python for Data Science Coursera Specialization
+
+
 **To extract edge features into dataframe**
 
 .. code:: python
@@ -213,7 +224,15 @@ We can extract the relevant data using list comprehension.
 
   df['preferential attachment'] = [i[2] for i in nx.preferential_attachment(G, df.index)]
 
+.. figure:: images/load_edge1.png
+    :width: 400px
+    :align: center
+    :height: 100px
+    :alt: alternate text
+    :figclass: align-center
 
+    From University of Michigan, Python for Data Science Coursera Specialization
+      
 In the case where the function expects two nodes to be passed in, we can map the index to a lamda function.
 
 .. code:: python
@@ -221,7 +240,14 @@ In the case where the function expects two nodes to be passed in, we can map the
   df['Common Neighbors'] \
   = df.index.map(lambda city: len(list(nx.common_neighbors(G, city[0], city[1]))))
 
+.. figure:: images/load_edge2.png
+    :width: 400px
+    :align: center
+    :height: 100px
+    :alt: alternate text
+    :figclass: align-center
 
+    From University of Michigan, Python for Data Science Coursera Specialization
 
 Printing Out Data
 ------------------
