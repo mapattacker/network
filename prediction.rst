@@ -1,6 +1,9 @@
 Prediction
 ===========
 
+Node Attribute
+---------------
+
 Predict node attributes based on centrality properties.
 
 First, parse all the data into a dataframe so that sklearn package can be used.
@@ -101,3 +104,7 @@ After determining the best C value, will pass this to the final test data which 
       output = pd.Series(result[:,1], index=dftest.index)
       
       return output
+    
+    
+Future Edge Linkage
+----------------------
