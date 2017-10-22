@@ -161,19 +161,19 @@ But we can easily extract the dictionary value using a map function.
   df['relation'] = df['weights'].map(lambda x: x['Weight'])
 
 
-To extract node attributes into dataframe
+**To extract node attributes into dataframe**
 
 .. code:: python
   
   G.nodes(data=True)
- #  [('El Paso, TX', {'location': (-106, 31), 'population': 674433}),
- # ('Long Beach, CA', {'location': (-118, 33), 'population': 469428}),
- # ('Dallas, TX', {'location': (-96, 32), 'population': 1257676}),
- # ('Oakland, CA', {'location': (-122, 37), 'population': 406253}),
- # ('Albuquerque, NM', {'location': (-106, 35), 'population': 556495}),
- # ('Baltimore, MD', {'location': (-76, 39), 'population': 622104}),
- # ('Raleigh, NC', {'location': (-78, 35), 'population': 431746}),
- # ('Mesa, AZ', {'location': (-111, 33), 'population': 457587})....
+  #  [('El Paso, TX', {'location': (-106, 31), 'population': 674433}),
+  # ('Long Beach, CA', {'location': (-118, 33), 'population': 469428}),
+  # ('Dallas, TX', {'location': (-96, 32), 'population': 1257676}),
+  # ('Oakland, CA', {'location': (-122, 37), 'population': 406253}),
+  # ('Albuquerque, NM', {'location': (-106, 35), 'population': 556495}),
+  # ('Baltimore, MD', {'location': (-76, 39), 'population': 622104}),
+  # ('Raleigh, NC', {'location': (-78, 35), 'population': 431746}),
+  # ('Mesa, AZ', {'location': (-111, 33), 'population': 457587})....
  
   # Initialize the dataframe, using the nodes as the index
   df = pd.DataFrame(index=G.nodes())
@@ -189,6 +189,37 @@ which can also easily be added to our dataframe.
 
   df['clustering'] = pd.Series(nx.clustering(G))
   df['degree'] = pd.Series(G.degree())
+
+**To extract edge features into dataframe**
+
+.. code:: python
+
+  # Initialize the dataframe, using the edges as the index
+  df = pd.DataFrame(index=G.edges())
+  # [('El Paso, TX', 'Albuquerque, NM', {'weight': 367.88584356108345}),
+  #  ('El Paso, TX', 'Mesa, AZ', {'weight': 536.256659972679}),
+  #  ('El Paso, TX', 'Tucson, AZ', {'weight': 425.41386739988224}),
+  #  ('El Paso, TX', 'Phoenix, AZ', {'weight': 558.7835703774161}),
+  #  ('El Paso, TX', 'Colorado Springs, CO', {'weight': 797.7517116740046}),
+  #  ('Long Beach, CA', 'Oakland, CA', {'weight': 579.5829987228403})....
+
+  df['weight'] = pd.Series(nx.get_edge_attributes(G, 'weight'))
+
+Many of the networkx functions related to edges return a nested data structures. 
+We can extract the relevant data using list comprehension.
+
+
+.. code:: python
+
+  df['preferential attachment'] = [i[2] for i in nx.preferential_attachment(G, df.index)]
+
+
+In the case where the function expects two nodes to be passed in, we can map the index to a lamda function.
+
+.. code:: python
+
+  df['Common Neighbors'] \
+  = df.index.map(lambda city: len(list(nx.common_neighbors(G, city[0], city[1]))))
 
 
 
