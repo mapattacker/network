@@ -61,7 +61,8 @@ Then, data is split and analysed using logistic regression within a Grid Search.
   # Grid best parameter (max. AUC):  {'C': 400}
   # Grid best score (AUC):  0.936997156006
 
-After determining the best C value, will pass this to the final test data which has unknown y-value.
+After determining the best C value, with a reasonable AUC score,
+will pass this to the final test data which has unknown y-value.
 
 .. code:: python
 
@@ -95,7 +96,6 @@ After determining the best C value, will pass this to the final test data which 
       test = scaler.transform(test)
       
       # create model
-      # X_train, X_test, y_train, y_test = train_test_split(X, y, random_state=0)
       clf = LogisticRegression(C=400)
       clf.fit(X, y)
       
