@@ -100,7 +100,7 @@ Social networks tend to have high clustering coefficient and small average path 
     :figclass: align-center
     
     From University of Michigan, Python for Data Science Coursera Specialization
-    
+
 Variants of the small world model in NetworkX:
 
  • Small world networks can be disconnected, which is sometime undesirable.

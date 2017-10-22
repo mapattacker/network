@@ -167,6 +167,14 @@ Printing Out Data
 
 .. code:: python
 
+  # summary
+  print(nx.info(G))
+  # Name: 
+  # Type: Graph
+  # Number of nodes: 1005
+  # Number of edges: 16706
+  # Average degree:  33.2458
+
   # list nodes
   g.nodes()
   
