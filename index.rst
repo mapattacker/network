@@ -22,4 +22,4 @@ https://networkx.github.io/documentation/networkx-2.0/index.html
    connectivity.rst
    influence_central.rst
    evolution.rst
-   classification.rst
+   prediction.rst
