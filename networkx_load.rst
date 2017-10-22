@@ -161,6 +161,36 @@ But we can easily extract the dictionary value using a map function.
   df['relation'] = df['weights'].map(lambda x: x['Weight'])
 
 
+To extract node attributes into dataframe
+
+.. code:: python
+  
+  G.nodes(data=True)
+ #  [('El Paso, TX', {'location': (-106, 31), 'population': 674433}),
+ # ('Long Beach, CA', {'location': (-118, 33), 'population': 469428}),
+ # ('Dallas, TX', {'location': (-96, 32), 'population': 1257676}),
+ # ('Oakland, CA', {'location': (-122, 37), 'population': 406253}),
+ # ('Albuquerque, NM', {'location': (-106, 35), 'population': 556495}),
+ # ('Baltimore, MD', {'location': (-76, 39), 'population': 622104}),
+ # ('Raleigh, NC', {'location': (-78, 35), 'population': 431746}),
+ # ('Mesa, AZ', {'location': (-111, 33), 'population': 457587})....
+ 
+  # Initialize the dataframe, using the nodes as the index
+  df = pd.DataFrame(index=G.nodes())
+  
+  df['location'] = pd.Series(nx.get_node_attributes(G, 'location'))
+  df['population'] = pd.Series(nx.get_node_attributes(G, 'population'))
+  
+  
+Most of the networkx functions related to nodes return a dictionary, 
+which can also easily be added to our dataframe.
+
+.. code:: python
+
+  df['clustering'] = pd.Series(nx.clustering(G))
+  df['degree'] = pd.Series(G.degree())
+
+
 
 Printing Out Data
 ------------------
